@@ -7,7 +7,8 @@ import torch
 from batchgenerators.augmentations.utils import resize_segmentation
 from scipy.ndimage.interpolation import map_coordinates
 from skimage.transform import resize
-from nnunetv2.configuration import ANISO_THRESHOLD
+
+ANISO_THRESHOLD = 3
 
 
 def get_do_separate_z(spacing: Union[Tuple[float, ...], List[float], np.ndarray], anisotropy_threshold=ANISO_THRESHOLD):
@@ -187,3 +188,13 @@ def resample_data_or_seg(data: np.ndarray, new_shape: Union[Tuple[float, ...], L
     else:
         # print("no resampling necessary")
         return data
+
+def compute_new_spacing(old_shape, new_shape, old_spacing):
+    return np.array([float(round(i / j * k, 2)) for i, j, k in zip(old_spacing, new_shape, old_shape)])
+
+if __name__ == "__main__":
+    old_shape = [640, 640, 419]
+    old_spacing = [0.25, 0.25, 0.25]
+    new_shape = [128] * 3
+    print(compute_new_spacing(old_shape, new_shape, old_spacing))
+    

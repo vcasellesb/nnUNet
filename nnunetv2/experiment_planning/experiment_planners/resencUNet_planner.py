@@ -11,7 +11,7 @@ from nnunetv2.experiment_planning.experiment_planners.default_experiment_planner
 from nnunetv2.experiment_planning.experiment_planners.network_topology import get_pool_and_conv_props
 
 
-class ResEncUNetPlanner(ExperimentPlanner):
+class ResEncPlanner(ExperimentPlanner):
     def __init__(self, dataset_name_or_id: Union[str, int],
                  gpu_memory_target_in_gb: float = 8,
                  preprocessor_name: str = 'DefaultPreprocessor', plans_name: str = 'nnUNetResEncUNetPlans',

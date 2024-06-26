@@ -1356,3 +1356,7 @@ class nnUNetTrainer(object):
             self.on_epoch_end()
 
         self.on_train_end()
+
+
+if __name__ == "__main__":
+    in_json = '/Users/vicentcaselles/uni/Master_bioinformatica_bioestadistica/Semestre5/tfm/transfer-learning/dataset.json'
